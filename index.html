@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idea Pulse</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Idea Pulse</p>
+        <h1>Share your ideas. Measure the pulse.</h1>
+        <p class="hero__subtitle">
+          Post your ideas, watch the votes roll in, and learn what your community cares about.
+        </p>
+      </div>
+      <div class="hero__stats">
+        <div>
+          <span id="total-ideas">0</span>
+          <small>ideas shared</small>
+        </div>
+        <div>
+          <span id="total-votes">0</span>
+          <small>total votes</small>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="composer">
+        <h2>Post a new idea</h2>
+        <form id="idea-form" class="composer__form">
+          <label>
+            Title
+            <input type="text" id="idea-title" placeholder="One-line pitch" maxlength="80" required />
+          </label>
+          <label>
+            Description
+            <textarea
+              id="idea-description"
+              rows="4"
+              placeholder="Why does this idea matter?"
+              maxlength="280"
+              required
+            ></textarea>
+          </label>
+          <div class="composer__footer">
+            <span id="character-count">0 / 280</span>
+            <button type="submit">Share idea</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="feed">
+        <div class="feed__header">
+          <h2>Community feed</h2>
+          <div class="feed__filters">
+            <button class="chip is-active" data-sort="newest">Newest</button>
+            <button class="chip" data-sort="top">Top voted</button>
+          </div>
+        </div>
+
+        <div id="idea-feed" class="feed__grid"></div>
+        <p id="empty-state" class="empty-state">Be the first to share an idea.</p>
+        <div class="feed__footer">
+          <button id="prev-page" class="pager-button" type="button">Previous</button>
+          <span id="page-status">Page 1 of 1</span>
+          <button id="next-page" class="pager-button" type="button">Next</button>
+        </div>
+      </section>
+    </main>
+
+    <template id="idea-template">
+      <article class="card">
+        <div class="card__header">
+          <div>
+            <h3 class="card__title"></h3>
+            <p class="card__timestamp"></p>
+          </div>
+          <span class="card__badge">Idea</span>
+        </div>
+        <p class="card__description"></p>
+        <div class="card__actions">
+          <button class="vote-button" data-action="upvote">
+            <span class="vote-button__icon">▲</span>
+            <span class="vote-button__label">Upvote</span>
+          </button>
+          <button class="vote-button" data-action="downvote">
+            <span class="vote-button__icon">▼</span>
+            <span class="vote-button__label">Downvote</span>
+          </button>
+          <div class="card__score">
+            <span class="score-value"></span>
+            <small>score</small>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
